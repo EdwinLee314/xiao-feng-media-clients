@@ -1,0 +1,7 @@
+{
+    "/category": {
+        "target": "https://www.xiaofengmedia.com",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

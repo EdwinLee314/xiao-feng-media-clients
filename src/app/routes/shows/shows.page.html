@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      节目单H1
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between stretch">
+        <mat-card class="m-12 bt" fxFlex="28" *ngFor="let program of programs; let i = index">
+          <img class="m-0" mat-card-image src="{{program.show_cover}}" alt="{{program.title}}" />
+          <mat-card-content>
+            
+            <p>{{ program.short_description }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+    </div>
+</ion-content>

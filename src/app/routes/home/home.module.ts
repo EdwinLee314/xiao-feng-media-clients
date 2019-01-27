@@ -1,3 +1,4 @@
+import { AudioPlayerModule } from './../../shared/audio-player/audio-player.module';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     RouterModule.forChild([{ path: '', component: HomePage }]),
     MatButtonModule,
     MatIconModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AudioPlayerModule
   ],
   declarations: [HomePage]
 })

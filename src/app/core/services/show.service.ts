@@ -4,23 +4,23 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators';
 import { Episode } from '../models/episode.model';
-
+const uuidv5 = require('uuid/v5');
 declare var require: any;
 
 @Injectable()
 export class ShowService {
 
-    private feedUrl: string = 'category/zhihuixinyu/feed/';
-
     constructor(private http: HttpClient) { }
 
-    public getShow(): Observable<any> {
+    public getShow(program: string): Observable<any> {
+        let feedUrl = 'category/' + program + '/feed/';
         return this.http
-            .get(this.feedUrl, { responseType: 'text' })
+            .get(feedUrl, { responseType: 'text' })
             .pipe(
                 catchError((error: any) => this.handleError(error))
             );
     }
+
     private handleError(error: HttpErrorResponse) {
         error = error.error;
         const errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
@@ -33,8 +33,9 @@ export class ShowService {
         let domdoc = domparser.parseFromString(xmlStr, 'application/xml');
         let itemList = Array.from(domdoc.querySelectorAll("item"));
         for (let element of itemList) {
-            console.log(element);
+            // console.log(element);
             let episode: Episode = {
+                id: '',
                 title: '',
                 pubdate: '',
                 content: '',
@@ -43,6 +44,7 @@ export class ShowService {
                 creator: '',
                 category: ''
             };
+            
             episode.title = element.getElementsByTagName('title')[0].textContent;
             episode.pubdate = element.getElementsByTagName('pubDate')[0].textContent;
             episode.creator = element.getElementsByTagName('dc:creator')[0].textContent;
@@ -50,7 +52,7 @@ export class ShowService {
             let eleContent = element.getElementsByTagName('content:encoded')[0].textContent;
             episode = this.parseContent(eleContent, episode);
             // console.log(episode);
-
+            episode.id = uuidv5(episode.title, uuidv5.URL);
             episodes.push(episode);
         }
         return episodes;

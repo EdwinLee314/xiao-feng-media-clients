@@ -1,5 +1,7 @@
 {
   "name": "xiao-feng-media-clients",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,0 +1,16 @@
+<div class="p-16" fxLayout="column" *ngIf="program">
+    <div fxLayout="row">
+        <div fxFlex="40">
+            <img src="{{program.show_cover}}">
+        </div>
+        
+        <div class="pl-16" fxFlex="60">
+            <h1 class="pt-0">{{program.title}}</h1>
+            <p class='author'>小凤电台</p>
+        </div>
+    </div>
+
+    <div class="pt-16 pb-16 description">
+        {{program.short_description}}
+    </div>
+</div> 

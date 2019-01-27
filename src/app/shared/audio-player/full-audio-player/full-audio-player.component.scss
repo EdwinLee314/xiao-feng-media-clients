@@ -1,0 +1,44 @@
+.audio-player{
+    padding: 10%;
+}
+
+.cover-container{
+    margin: auto;
+    text-align: center;
+    padding-top: 5%;
+}
+
+.cover{
+    max-width: 300px;
+    width: 80%;
+}
+
+.ctrlbar{
+    width: 80%;
+    margin: auto;
+}
+
+.marquee{
+    display: block;
+    position: relative;
+    height: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.marquee span {
+    display: inline-block;
+    position: absolute;
+    margin: 0;
+    animation: myscroll 15s infinite linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes myscroll {
+    0% {
+        left: 100%;
+    }
+    100% {
+        left: -100%;
+    }
+}

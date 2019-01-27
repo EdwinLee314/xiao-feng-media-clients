@@ -1,0 +1,69 @@
+<div class="audio-player" fxLayout="column" fxLayoutAlign="center stretch" *ngIf="active">
+    <div class="cover-container">
+        <img class="cover" src="{{program.show_cover}}">
+    </div>
+    
+    <ion-range 
+        [min]="0" [max]="getDuration()"
+        (ionFocus)="onSeekStart()" 
+        (ionChange)="onSeekChange($event)"
+        (ionBlur)="onSeekEnd($event)"
+        [formControl]="seekbar"
+        name="seekbar">
+        <ion-label slot="start">{{ formatTime(seek) }}</ion-label>
+        <ion-label slot="end">{{ formatTime(getDuration()) }}</ion-label>
+    </ion-range>
+
+    <div class="marquee" *ngIf="title">
+        <span>{{title}}</span>
+    </div>
+
+    <div class="ctrlbar" fxLayout="row" fxLayoutAlign="space-between stretch">
+        
+        <button mat-icon-button (click)="replay()">
+            <!-- <ion-icon name="rewind"></ion-icon>
+                        <ion-icon name="skip-backward"></ion-icon> -->
+            <mat-icon aria-label="Replay 10s" >replay_10</mat-icon>
+        </button>
+        <button mat-icon-button (click)="play()" *ngIf="playing === false">
+            <ion-icon name="play"></ion-icon>
+        </button>
+        <button mat-icon-button (click)="pause()" *ngIf="playing === true">
+            <ion-icon name="pause"></ion-icon>
+        </button>
+        <button mat-icon-button (click)="forward()">
+            <!-- <ion-icon name="rewind"></ion-icon>
+                        <ion-icon name="skip-forward"></ion-icon> -->
+            <mat-icon aria-label="Forward 30s" >forward_30</mat-icon>
+        </button>
+    </div>
+
+    <ion-range [min]="0" [max]="100" 
+        (ionChange)="onVolumeChange($event)" 
+        [formControl]="volumebar" name="volumebar">
+        <ion-icon slot="start" name="volume-mute"></ion-icon>
+        <ion-icon slot="end" name="volume-high"></ion-icon>
+    </ion-range>
+
+    <div fxLayout="row" fxLayoutAlign="space-between stretch">
+        <button mat-icon-button (click)="changeRate()">
+            {{rate}}X
+        </button>
+
+        <button mat-icon-button>
+            <ion-icon ios="ios-more" md="ios-more"></ion-icon>
+        </button>
+    </div>
+</div>
+
+<div class="pt-16" style="text-align: center;" *ngIf="!active">
+    <p style="text-align: center;">
+        <img style="width:60%;" src="./assets/logo.png">
+    </p>
+    <h1>
+        全听完了！
+    </h1>
+    <p>
+        如果尚未查看是否有其他可播放的单集，不妨现在找找看。
+    </p>
+</div>

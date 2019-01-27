@@ -1,0 +1,30 @@
+<!-- <ion-footer translucent>
+    <h1>123asd</h1>
+</ion-footer> -->
+
+<ion-header>
+    <ion-toolbar>
+        <ion-button slot="start" fill="clear" (click)="backTo()">
+            浏览
+            <mat-icon slot="start" aria-label="back">arrow_back_ios</mat-icon>
+        </ion-button>
+        <ion-title>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ng-container *ngIf="loading$ | async; else mylist">
+        <div style="text-align: center">
+            <ion-spinner></ion-spinner>
+        </div>
+        
+    </ng-container>
+    
+    <ng-template #mylist>
+        <program-info [program]="program$ | async"></program-info>
+        <episode-list [episodes]="episodes$ | async"></episode-list>
+    </ng-template>
+    
+</ion-content>

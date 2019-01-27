@@ -1,0 +1,30 @@
+<!-- <ion-list>
+    <ion-list-header>
+        <ion-label>节目</ion-label>
+    </ion-list-header> -->
+    <!-- <ion-item-options>
+        <ion-item-sliding>
+            <ng-container *ngFor="let episode of episodes">
+                <ion-item-option (onclick)="playingEpisode(episode)" >
+                    <div>
+                        <div>{{ episode.pubdate | date:'yyyy-MM-dd'}}</div>
+                        <div>{{ episode.title}}</div>
+                        <div>{{ (episode.content | slice:0:50)+'...' }}</div>
+                    </div>
+                </ion-item-option>
+            </ng-container>
+        </ion-item-sliding>
+    </ion-item-options>
+    -->
+<!-- </ion-list> -->
+<mat-action-list>
+    <h3 matSubheader>列表</h3>
+    <mat-list-item *ngFor="let episode of episodes" (click)="playingEpisode(episode)">
+        <div class="episode-unit">
+            <div class="episode-date">{{ episode.pubdate | date:'yyyy-MM-dd'}}</div>
+            <div class="episode-title">{{ episode.title}}</div>
+            <div class="episode-content">{{ (episode.content | slice:0:25)+'...' }}</div>
+        </div>
+        
+    </mat-list-item>
+</mat-action-list>

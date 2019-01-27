@@ -1,4 +1,5 @@
 export interface Episode {
+    id: string,
     title: string,
     pubdate: string,
     content: string,

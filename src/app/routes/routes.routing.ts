@@ -35,25 +35,25 @@ const routes: Routes = [
                     }
                 ]
             },
-            {
-                path: 'contact',
-                children: [
-                    {
-                        path: '',
-                        loadChildren: './contact/contact.module#ContactPageModule'
-                    }
-                ]
-            },
+            // {
+            //     path: 'contact',
+            //     children: [
+            //         {
+            //             path: '',
+            //             loadChildren: './contact/contact.module#ContactPageModule'
+            //         }
+            //     ]
+            // },
             {
                 path: '',
-                redirectTo: '/tabs/home',
+                redirectTo: '/tabs/shows',
                 pathMatch: 'full'
             }
         ]
     },
     {
         path: '',
-        redirectTo: '/tabs/home',
+        redirectTo: '/tabs/shows',
         pathMatch: 'full'
     }
 ];
